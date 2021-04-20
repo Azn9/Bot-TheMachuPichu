@@ -1,9 +1,6 @@
 package dev.azn9.bot;
 import dev.azn9.bot.configuration.Configuration;
-import dev.azn9.bot.modules.BotModule;
-import dev.azn9.bot.modules.SettingsMessageModule;
-import dev.azn9.bot.modules.TwitchModule;
-import dev.azn9.bot.modules.YoutubeModule;
+import dev.azn9.bot.modules.*;
 import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
@@ -24,6 +21,14 @@ public class BotCore {
         this.botModules.add(new SettingsMessageModule(configuration));
         this.botModules.add(new YoutubeModule(configuration));
         this.botModules.add(new TwitchModule(configuration));
+        this.botModules.add(new AutoroleModule(configuration));
+        this.botModules.add(new AutovocalCreateModule());
+        this.botModules.add(new GiveawayCreateModule(configuration));
+        this.botModules.add(new GiveawayReactionModule(configuration));
+        this.botModules.add(new JoinMessageModule(configuration));
+        this.botModules.add(new LeaveMessageModule(configuration));
+        this.botModules.add(new SuggestionsMessageModule(configuration));
+        this.botModules.add(new SuggestionsReactionsModule(configuration));
     }
 
     public void start() {
